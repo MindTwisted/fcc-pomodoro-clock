@@ -22,5 +22,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# ide
+# IDE config
 /.idea
+
+# tailwind compiled styles
+/src/tailwind.generated.css
