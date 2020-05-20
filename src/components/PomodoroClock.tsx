@@ -10,7 +10,7 @@ const PomodoroClock = () => {
   return (
     <div className='w-full max-w-2xl rounded overflow-hidden shadow-xl'>
       <div className='px-6 py-4'>
-        <div className='font-bold text-3xl text-center mb-4'>Pomodoro clock</div>
+        <div className='font-bold text-3xl text-center mb-4'>Pomodoro Clock</div>
         <div className='flex justify-around'>
           <div className='w-40'>
             <div className='text-center text-gray-700 text-xl'
