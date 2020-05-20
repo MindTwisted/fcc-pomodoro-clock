@@ -5,6 +5,7 @@ type MinutesPickerProps = {
   decrementButtonId: string
   minutesViewerId: string
   incrementButtonId: string
+  isActive: boolean
   incrementMinutes: () => void
   decrementMinutes: () => void
 }
@@ -14,6 +15,7 @@ const MinutesPicker: React.FC<MinutesPickerProps> = ({
   decrementButtonId,
   minutesViewerId,
   incrementButtonId,
+  isActive,
   incrementMinutes,
   decrementMinutes
 }: MinutesPickerProps) => {
@@ -21,7 +23,8 @@ const MinutesPicker: React.FC<MinutesPickerProps> = ({
     <div className='bg-gray-700 px-2 py-2 rounded flex justify-center items-center'>
       <button className='bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded text-xl'
         id={decrementButtonId}
-        onClick={() => decrementMinutes()}>
+        onClick={() => decrementMinutes()}
+        disabled={!isActive}>
           -
       </button>
       <span className='px-4 font-bold text-white text-2xl'
@@ -30,7 +33,8 @@ const MinutesPicker: React.FC<MinutesPickerProps> = ({
       </span>
       <button className='bg-white hover:bg-gray-200 text-black font-bold py-2 px-4 rounded text-xl'
         id={incrementButtonId}
-        onClick={() => incrementMinutes()}>
+        onClick={() => incrementMinutes()}
+        disabled={!isActive}>
           +
       </button>
     </div>
