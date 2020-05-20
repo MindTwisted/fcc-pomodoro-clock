@@ -2,6 +2,7 @@ import React from 'react'
 import usePomodoroClockState from '../hooks/usePomodoroClockState'
 import MinutesPicker from './MinutesPicker'
 import ClockCountdown from './ClockCountdown'
+import AlarmSound from './AlarmSound'
 
 const PomodoroClock = () => {
   const { state, actions } = usePomodoroClockState()
@@ -49,6 +50,8 @@ const PomodoroClock = () => {
           timeLeft={state.currentIntervalSettings.timeLeft}
         />
 
+        <AlarmSound />
+
         <div className='text-center'>
           {state.currentIntervalSettings.isRunning ? (
             <button className='bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded m-2'
@@ -65,7 +68,8 @@ const PomodoroClock = () => {
           )
           }
           <button className='bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded m2'
-            id='reset'>
+            id='reset'
+            onClick={actions.resetClock}>
             Reset
           </button>
         </div>

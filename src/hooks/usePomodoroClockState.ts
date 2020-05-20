@@ -7,9 +7,12 @@ import {
   DECREMENT_SESSION_LENGTH,
   INCREMENT_BREAK_LENGTH,
   INCREMENT_SESSION_LENGTH,
+  RESET_CLOCK,
   START_CLOCK,
+  STOP_ALARM,
   STOP_CLOCK
 } from '../types/actionTypes'
+import EventBus from '../utils/EventBus'
 
 type PomodoroClockState = {
   settings: {
@@ -21,7 +24,6 @@ type PomodoroClockState = {
     initialTime: number
     timeLeft: number
     isRunning: boolean
-    isAlarm: boolean
   }
 }
 
@@ -36,8 +38,7 @@ const pomodoroClockInitialState: PomodoroClockState = {
     name: 'Session',
     initialTime: defaultSessionLength * 60,
     timeLeft: defaultSessionLength * 60,
-    isRunning: false,
-    isAlarm: false
+    isRunning: false
   }
 }
 
@@ -45,7 +46,7 @@ const pomodoroClockReducer = produce((draft: PomodoroClockState, action: Pomodor
   switch (action.type) {
     case INCREMENT_BREAK_LENGTH:
       {
-        const nextLength = draft.settings.breakLength + 1 > 60 ? 1 : draft.settings.breakLength + 1
+        const nextLength = draft.settings.breakLength + 1 > 60 ? 60 : draft.settings.breakLength + 1
 
         draft.settings.breakLength = nextLength
 
@@ -58,7 +59,7 @@ const pomodoroClockReducer = produce((draft: PomodoroClockState, action: Pomodor
       break
     case DECREMENT_BREAK_LENGTH:
       {
-        const nextLength = draft.settings.breakLength - 1 < 1 ? 60 : draft.settings.breakLength - 1
+        const nextLength = draft.settings.breakLength - 1 < 1 ? 1 : draft.settings.breakLength - 1
 
         draft.settings.breakLength = nextLength
 
@@ -71,7 +72,7 @@ const pomodoroClockReducer = produce((draft: PomodoroClockState, action: Pomodor
       break
     case INCREMENT_SESSION_LENGTH:
       {
-        const nextLength = draft.settings.sessionLength + 1 > 60 ? 1 : draft.settings.sessionLength + 1
+        const nextLength = draft.settings.sessionLength + 1 > 60 ? 60 : draft.settings.sessionLength + 1
 
         draft.settings.sessionLength = nextLength
 
@@ -84,7 +85,7 @@ const pomodoroClockReducer = produce((draft: PomodoroClockState, action: Pomodor
       break
     case DECREMENT_SESSION_LENGTH:
       {
-        const nextLength = draft.settings.sessionLength - 1 < 1 ? 60 : draft.settings.sessionLength - 1
+        const nextLength = draft.settings.sessionLength - 1 < 1 ? 1 : draft.settings.sessionLength - 1
 
         draft.settings.sessionLength = nextLength
 
@@ -104,11 +105,15 @@ const pomodoroClockReducer = produce((draft: PomodoroClockState, action: Pomodor
       draft.currentIntervalSettings.isRunning = false
 
       break
+    case RESET_CLOCK:
+      EventBus.emit('stopAlarm')
+
+      return { ...pomodoroClockInitialState }
     case CLOCK_TICK:
       {
         const nextTimeLeft = draft.currentIntervalSettings.timeLeft - 1
 
-        if (nextTimeLeft > 0) {
+        if (nextTimeLeft >= 0) {
           draft.currentIntervalSettings.timeLeft = nextTimeLeft
 
           break
@@ -120,8 +125,13 @@ const pomodoroClockReducer = produce((draft: PomodoroClockState, action: Pomodor
         draft.currentIntervalSettings.name = nextIntervalName
         draft.currentIntervalSettings.initialTime = nextTime
         draft.currentIntervalSettings.timeLeft = nextTime
-        draft.currentIntervalSettings.isAlarm = true
+
+        EventBus.emit('startAlarm')
       }
+
+      break
+    case STOP_ALARM:
+      EventBus.emit('stopAlarm')
 
       break
   }
@@ -183,13 +193,27 @@ export default function usePomodoroClockState (initialState: PomodoroClockState 
     })
   }
 
+  const resetClock = () => {
+    dispatch({
+      type: RESET_CLOCK
+    })
+  }
+
+  const stopAlarm = () => {
+    dispatch({
+      type: STOP_ALARM
+    })
+  }
+
   const actions = {
     incrementBreakLength,
     decrementBreakLength,
     incrementSessionLength,
     decrementSessionLength,
     startClock,
-    stopClock
+    stopClock,
+    resetClock,
+    stopAlarm
   }
 
   return {

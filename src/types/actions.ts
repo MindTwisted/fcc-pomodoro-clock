@@ -3,8 +3,9 @@ import {
   DECREMENT_BREAK_LENGTH,
   DECREMENT_SESSION_LENGTH,
   INCREMENT_BREAK_LENGTH,
-  INCREMENT_SESSION_LENGTH,
+  INCREMENT_SESSION_LENGTH, RESET_CLOCK,
   START_CLOCK,
+  STOP_ALARM,
   STOP_CLOCK
 } from './actionTypes'
 
@@ -36,10 +37,20 @@ type ClockTickAction = {
   type: typeof CLOCK_TICK
 }
 
+type StopAlarmAction = {
+  type: typeof STOP_ALARM
+}
+
+type ResetClockAction = {
+  type: typeof RESET_CLOCK
+}
+
 export type PomodoroClockActions = IncrementBreakLengthAction |
 DecrementBreakLengthAction |
 IncrementSessionLengthAction |
 DecrementSessionLengthAction |
 StartClockAction |
 StopClockAction |
-ClockTickAction
+ClockTickAction |
+StopAlarmAction |
+ResetClockAction
