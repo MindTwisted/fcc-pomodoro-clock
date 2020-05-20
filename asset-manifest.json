@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/css/main.428ebdab.chunk.css",
-    "main.js": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/main.fc477adc.chunk.js",
-    "main.js.map": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/main.fc477adc.chunk.js.map",
+    "main.js": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/main.bda60195.chunk.js",
+    "main.js.map": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/main.bda60195.chunk.js.map",
     "runtime-main.js": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/runtime-main.bca0ca46.js",
     "runtime-main.js.map": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/runtime-main.bca0ca46.js.map",
     "static/js/2.ca851416.chunk.js": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/2.ca851416.chunk.js",
     "static/js/2.ca851416.chunk.js.map": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/2.ca851416.chunk.js.map",
     "index.html": "https://mindtwisted.github.io/fcc-pomodoro-clock/index.html",
-    "precache-manifest.02a54099e19b04833644faa50cb4833f.js": "https://mindtwisted.github.io/fcc-pomodoro-clock/precache-manifest.02a54099e19b04833644faa50cb4833f.js",
+    "precache-manifest.79ac88614d5046cfc7db2d47e2c3b27d.js": "https://mindtwisted.github.io/fcc-pomodoro-clock/precache-manifest.79ac88614d5046cfc7db2d47e2c3b27d.js",
     "service-worker.js": "https://mindtwisted.github.io/fcc-pomodoro-clock/service-worker.js",
     "static/css/main.428ebdab.chunk.css.map": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/css/main.428ebdab.chunk.css.map",
     "static/js/2.ca851416.chunk.js.LICENSE.txt": "https://mindtwisted.github.io/fcc-pomodoro-clock/static/js/2.ca851416.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.bca0ca46.js",
     "static/js/2.ca851416.chunk.js",
     "static/css/main.428ebdab.chunk.css",
-    "static/js/main.fc477adc.chunk.js"
+    "static/js/main.bda60195.chunk.js"
   ]
 }
