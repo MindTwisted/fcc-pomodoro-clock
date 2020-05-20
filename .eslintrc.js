@@ -28,6 +28,8 @@ module.exports = {
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': ['error'],
     quotes: ['error', 'single'],
-    'jsx-quotes': ['error', 'prefer-single']
+    'jsx-quotes': ['error', 'prefer-single'],
+    'indent': 'off',
+    '@typescript-eslint/indent': ['error', 2]
   }
 }
